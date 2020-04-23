@@ -1,0 +1,55 @@
+﻿@using WebApplication3.Models;
+@model List<GIAODICH>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@if (Model != null && Model.Any())
+{
+    <div style="margin-bottom:25px">
+        <a class="btn-primary btn" href="~/Trade/Create.cshtml">Tạo Mới Giao Dịch</a>
+    </div>
+    <table class="table-bordered table table-hover">
+        <thead>
+            <tr>
+              <th>Mã Định Danh</th>
+              <th>Mã Liên Kết</th>
+              <th>Giá Cơ Sở</th>
+              <th>Giá Thực Hiện</th>
+              <th>Ngày Giao Dịch</th>
+              <th>Loại Giao Dịch</th>
+              <th>Số Lượng</th>
+              <th>Loại Repo</th>
+              <th>Mã Trái Phiếu</th>
+              <th>Mã Đối Tác</th>
+               <th>Thao Tác</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+             <tr>
+                 <td>@item.MaDinhDanh</td>
+                 <td>@item.MaLK</td>
+                 <td>@item.GiaCoSo</td>
+                 <td>@item.GiaThucHien</td>
+                 <td>@item.NgayGiaoDich</td>
+                 <td>@item.LoaiGiaoDich</td>
+                 <td>@item.SoLuong</td>
+                 <td>@item.LoaiRepo</td>
+                 <td>@item.MaTP</td>
+                 <td>@item.MaDT</td>
+                 <td>
+                     <a href="">Xóa</a>
+                     <a href="">Sửa</a>
+                 </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    
+}
