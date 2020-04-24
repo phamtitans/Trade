@@ -26,5 +26,43 @@ namespace WebApplication3.Controllers
             
             return View(model);
         }
+        public ActionResult Create()
+        {
+            var model = new DOITAC();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(DOITAC model)
+        {
+            //var y = from s in db.GIAODICHes s
+            db.DOITACs.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            var partner = (from s in db.DOITACs where s.MaDT == id select s).FirstOrDefault();
+            db.DOITACs.Remove(partner);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Edit(int id)
+        {
+            var partner = (from s in db.DOITACs where s.MaDT == id select s).FirstOrDefault();
+            return View(partner);
+        }
+        [HttpPost]
+        public ActionResult Edit(DOITAC partner)
+        {
+            var partnerdb = (from s in db.DOITACs where s.MaDT == partner.MaDT select s).FirstOrDefault();
+            partnerdb.NguoiDaiDien = partner.NguoiDaiDien;
+            partnerdb.TaiKhoanHNX = partner.TaiKhoanHNX;
+            partnerdb.TaiKhoanNHNN = partner.TaiKhoanNHNN;
+            partnerdb.TenDT = partner.TenDT;
+            partnerdb.DiaChi = partner.DiaChi;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

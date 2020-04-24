@@ -11,7 +11,7 @@
 {
     
     <div style="margin-bottom:25px">
-        <a class="btn-primary btn" href="~/Views/Trade/Create.cshtml">Tạo Mới Giao Dịch</a>
+        <a class="btn-primary btn" href="~/Partner/Create">Tạo Mới Đối Tác</a>
     </div>
     <table class="table-bordered table table-hover">
         <thead>
@@ -37,8 +37,8 @@
                  <td>@item.TaiKhoanHNX</td>
                  <td>@item.TaiKhoanNHNN</td>
                  <td>
-                     <a href="">Xóa</a>
-                     <a href="">Sửa</a>
+                     <a href="~/Partner/Delete?id=@item.MaDT">Xóa</a>
+                     <a href="~/Partner/Edit?id=@item.MaDT">Sửa</a>
                  </td>
             </tr>
             }

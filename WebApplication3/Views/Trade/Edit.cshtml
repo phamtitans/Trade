@@ -1,19 +1,19 @@
 ﻿@using WebApplication3.Models;
 @model GIAODICH
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-@using (Html.BeginForm("Create", "Trade", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "Trade", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Add a Trade</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div style="display:none" class="form-group">
+    <div style="display:none"  class="form-group">
         @Html.LabelFor(m => m.MaDinhDanh, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.MaDinhDanh, new { @class = "form-control" })

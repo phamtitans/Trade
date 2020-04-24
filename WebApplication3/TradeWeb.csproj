@@ -282,6 +282,9 @@
     <Content Include="Views\Partner\Index.cshtml" />
     <Content Include="Views\Bonds\Index.cshtml" />
     <Content Include="Views\Trade\Create.cshtml" />
+    <Content Include="Views\Trade\Edit.cshtml" />
+    <Content Include="Views\Partner\Create.cshtml" />
+    <Content Include="Views\Partner\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
