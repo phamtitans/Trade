@@ -285,6 +285,8 @@
     <Content Include="Views\Trade\Edit.cshtml" />
     <Content Include="Views\Partner\Create.cshtml" />
     <Content Include="Views\Partner\Edit.cshtml" />
+    <Content Include="Views\Bonds\Edit.cshtml" />
+    <Content Include="Views\Bonds\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

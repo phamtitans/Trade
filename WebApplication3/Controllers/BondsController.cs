@@ -16,5 +16,42 @@ namespace WebApplication3.Controllers
             var model = (from s in db.TRAIPHIEUx select s).ToList();
             return View(model);
         }
+        public ActionResult Create()
+        {
+            var model = new TRAIPHIEU();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(TRAIPHIEU model)
+        {
+            //var y = from s in db.GIAODICHes s
+            db.TRAIPHIEUx.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            var bonds = (from s in db.TRAIPHIEUx where s.MaTP == id select s).FirstOrDefault();
+            db.TRAIPHIEUx.Remove(bonds);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Edit(int id)
+        {
+            var bonds = (from s in db.TRAIPHIEUx where s.MaTP == id select s).FirstOrDefault();
+            return View(bonds);
+        }
+        [HttpPost]
+        public ActionResult Edit(TRAIPHIEU bonds)
+        {
+            var bondDb = (from s in db.TRAIPHIEUx where s.MaTP == bonds.MaTP select s).FirstOrDefault();
+            bondDb.LSCoupon = bonds.LSCoupon;
+            bondDb.NgayDH = bonds.NgayDH;
+            bondDb.NgayPH = bonds.NgayPH;
+            bondDb.TCPH = bonds.TCPH;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

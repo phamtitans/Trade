@@ -10,7 +10,7 @@
 @if (Model != null && Model.Any())
 {
     <div style="margin-bottom:25px">
-        <a class="btn-primary btn" href="~/Views/Trade/Create.cshtml">Tạo Mới Giao Dịch</a>
+        <a class="btn-primary btn" href="~/Bonds/Create">Tạo Mới Giao Dịch</a>
     </div>
     <table class="table-bordered table table-hover">
         <thead>
@@ -34,8 +34,8 @@
                  <td>@item.NgayDH</td>
                  <td>@item.LSCoupon</td>
                  <td>
-                     <a href="">Xóa</a>
-                     <a href="">Sửa</a>
+                     <a href="~/Bonds/Delete?@item.MaTP">Xóa</a>
+                     <a href="~/Bonds/Edit?@item.MaTP">Sửa</a>
                  </td>
             </tr>
             }
