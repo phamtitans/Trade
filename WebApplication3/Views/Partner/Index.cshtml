@@ -7,12 +7,15 @@
 
 <h2>Index</h2>
 
+<div style="margin-bottom:25px">
+    <a class="btn-primary btn" href="~/Partner/Create">Tạo Mới Đối Tác</a>
+</div>
+@using (Html.BeginForm("Search", "Bonds", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+}
 @if (Model != null && Model.Any())
 {
-    
-    <div style="margin-bottom:25px">
-        <a class="btn-primary btn" href="~/Partner/Create">Tạo Mới Đối Tác</a>
-    </div>
     <table class="table-bordered table table-hover">
         <thead>
             <tr>
