@@ -1,0 +1,45 @@
+﻿@using WebApplication3.Models;
+@model List<TRAIPHIEU>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div style="margin-bottom:25px">
+    <a class="btn-primary btn" href="~/Bonds/Create">Tạo Mới Giao Dịch</a>
+</div>
+@if (Model != null && Model.Any())
+{
+    
+    <table class="table-bordered table table-hover">
+        <thead>
+            <tr>
+              <th>Mã Trái Phiếu</th>
+              <th>Tổ Chức Phát Hành</th>
+              <th>Ngày Phát Hành</th>
+              <th>Ngày Đáo Hạn</th>
+              <th>Lãi Suất Coupon</th>
+                <th>Thao Tác</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+             <tr>
+                 <td>@item.MaTP</td>
+                 <td>@item.TCPH</td>
+                 <td>@item.NgayPH</td>
+                 <td>@item.NgayDH</td>
+                 <td>@item.LSCoupon</td>
+                 <td>
+                     <a href="~/Bonds/Delete?@item.MaTP">Xóa</a>
+                     <a href="~/Bonds/Edit?@item.MaTP">Sửa</a>
+                 </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    
+}

@@ -53,5 +53,20 @@ namespace WebApplication3.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Search()
+        {
+            var MaLKList = db.GIAODICHes.Where(c => c.NgayGiaoDich > DateTime.Now && c.LoaiRepo == 1 && c.LoaiGiaoDich == "Sell" && c.TRAIPHIEU.NgayDH > DateTime.Now).Select(c => c.MaLK).Distinct().ToList();
+            foreach (var item in MaLKList)
+            {
+
+            }
+            var sellTotal = 
+            //var list = new List<string>();
+            //foreach (var item in trade)
+            //{
+            //    list.Add(item.MaLK);
+            //}
+            return View();
+        }
     }
 }

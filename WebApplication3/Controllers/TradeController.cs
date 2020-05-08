@@ -27,6 +27,29 @@ namespace WebApplication3.Controllers
         public ActionResult Create(GIAODICH model)
         {
             //var y = from s in db.GIAODICHes s
+            if(!String.IsNullOrEmpty(model.MaLK))
+            {
+                bool flag1 = db.GIAODICHes.Any(c => c.MaLK == model.MaLK);
+                if(flag1==false)
+                {
+                    ViewBag.log = "kiểm tra lại mã liên kết";
+                    return View();
+                }
+            }
+            else
+            {
+                model.MaLK = model.MaTP + model.MaDinhDanh.ToString() + model.MaDT + model.NgayGiaoDich.Ticks.ToString();
+            }
+            if(!db.DOITACs.Any(c => c.MaDT == model.MaDT))
+            {
+                ViewBag.logDT = "kiểm tra lại mã Đối Tác";
+                return View();
+            }
+            if (!db.TRAIPHIEUx.Any(c => c.MaTP == model.MaTP))
+            {
+                ViewBag.logTP = "kiểm tra lại mã Trái Phiếu";
+                return View();
+            }
             db.GIAODICHes.Add(model);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -58,6 +81,11 @@ namespace WebApplication3.Controllers
             tradedb.SoLuong = trade.SoLuong;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult Search()
+        {
+            var trade = db.GIAODICHes.Where(c => c.NgayGiaoDich < DateTime.Now && c.LoaiRepo == 1 && c.LoaiGiaoDich == "Sell").Select(c => new { c.DOITAC,c.GiaCoSo,c.LoaiGiaoDich});
+            return View();
         }
     }
 }
