@@ -84,7 +84,7 @@ namespace WebApplication3.Controllers
         }
         public ActionResult Search()
         {
-            var trade = db.GIAODICHes.Where(c => c.NgayGiaoDich<DateTime.Now && c.LoaiRepo==1 && c.LoaiGiaoDich=="Sell");
+            var trade = db.GIAODICHes.Where(c => c.NgayGiaoDich < DateTime.Now && c.LoaiRepo == 1 && c.LoaiGiaoDich == "Sell").Select(c => new { c.DOITAC,c.GiaCoSo,c.LoaiGiaoDich});
             return View();
         }
     }
